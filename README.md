@@ -70,8 +70,8 @@ O projeto segue a arquitetura em camadas conhecida como **Medallion Architecture
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/seuusuario/receita-federal-etl.git
-cd receita-federal-etl
+git clone https://github.com/ssantosfer/receita-federal-dados-etl.git
+cd receita-federal-dados-etl
 ```
 
 ### 2. Configurar variáveis de ambiente
@@ -105,6 +105,7 @@ Ao final, os dados estarão disponíveis nas tabelas:
 ├── transform/          # Scripts de tratamento (camada silver)
 ├── load/               # Scripts de persistência no banco (camada gold)
 ├── utils/              # Funções utilitárias
+├── schema/             # Esquema das tabelas que estão sendo ingeridas
 ├── main.py             # Orquestração do pipeline
 ├── requirements.txt    # Dependências do projeto
 ├── Dockerfile
