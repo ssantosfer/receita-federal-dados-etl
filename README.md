@@ -102,17 +102,32 @@ Ao final, os dados estarão disponíveis nas tabelas:
 O processo também pode ser executado **sem a utilização do Docker**.  
 Para isso, siga os passos abaixo:
 
-1. Crie um arquivo `.env` na raiz do projeto com a variável de conexão completa:
+1. Crie um arquivo `.env` na raiz do projeto com a variável de conexão completa (OBS: Substitua os valores em <> pelos valores corretos do seu PostgreSQL local):
 
-   ```bash
-   POSTGRES_CONN=postgresql+psycopg2://<usuario>:<senha>@localhost:5432/<nome_do_banco>
-  ```
-Substitua <usuario>, <senha> e <nome_do_banco> pelos valores corretos do seu PostgreSQL local.
+    ```bash
+    POSTGRES_CONN=postgresql+psycopg2://<usuario>:<senha>@localhost:5432/<nome_do_banco>
+    ```
 
-2. Execute o pipeline diretamente com Python:
-   ```bash
+2. Crie e ative um ambiente virtual Python:
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate   # Linux/Mac
+    venv\Scripts\activate      # Windows
+    ```
+
+3. Instale as dependências do projeto:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Execute o pipeline diretamente com Python:
+
+    ```bash
     python main.py
-  ```
+    ```
+
 ---
 
 ## Estrutura do Projeto
