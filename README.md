@@ -97,7 +97,7 @@ Ao final, os dados estarão disponíveis nas tabelas:
 
 ---
 
-## 🚀 Executando o projeto sem Docker
+## Executando o projeto sem Docker
 
 O processo também pode ser executado **sem a utilização do Docker**.  
 Para isso, siga os passos abaixo:
