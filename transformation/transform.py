@@ -27,7 +27,7 @@ def process_empresas(bronze_path="data/bronze/empresas", silver_path="data/silve
     df["qualificacao_responsavel"] = pd.to_numeric(df["qualificacao_responsavel"]).astype("Int64")
     df["capital_social"] = pd.to_numeric(df["capital_social"].str.replace(",", "."))
 
-    df.to_csv(os.path.join(silver_path, "empresas.csv"), index=False)
+    df.to_parquet(os.path.join(silver_path, "empresas.parquet"), index=False)
     logging.info(f"Arquivo processado ({len(df):,} linhas) | Arquivo salvo em {silver_path}")
 
 
@@ -55,5 +55,5 @@ def process_socios(bronze_path="data/bronze/socios", silver_path="data/silver/so
 
     df["tipo_socio"] = pd.to_numeric(df["tipo_socio"]).astype("Int64")
 
-    df.to_csv(os.path.join(silver_path, "socios.csv"), index=False)
+    df.to_parquet(os.path.join(silver_path, "socios.parquet"), index=False)
     logging.info(f"Arquivo processado ({len(df):,} linhas) | Arquivo salvo em {silver_path}")

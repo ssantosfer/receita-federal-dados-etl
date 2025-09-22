@@ -6,12 +6,12 @@ from schema.empresas_schema import empresas_schema
 from schema.socios_schema import socios_schema
 import logging
 
-def build_gold_sql(conn_str: str, gold_path="data/gold/final.csv"):
+def build_gold_sql(conn_str: str, gold_path="data/gold/final.parquet"):
     engine = create_engine(conn_str)
     logging.info("Conectando ao Postgres...")
 
-    df_empresas = pd.read_csv("data/silver/empresas/empresas.csv")
-    df_socios = pd.read_csv("data/silver/socios/socios.csv")
+    df_empresas = pd.read_parquet("data/silver/empresas/empresas.parquet")
+    df_socios = pd.read_parquet("data/silver/socios/socios.parquet")
     logging.info(f"Tabelas lidas: empresas({len(df_empresas):,} linhas), sócios({len(df_socios):,} linhas)")
 
     load_to_postgres(df_empresas, "stg_empresas", conn_str, chunksize=100000, dtype=empresas_schema)
@@ -40,7 +40,7 @@ def build_gold_sql(conn_str: str, gold_path="data/gold/final.csv"):
         df_gold = pd.read_sql(text(sql), conn)
 
     os.makedirs(os.path.dirname(gold_path), exist_ok=True)
-    df_gold.to_csv(gold_path, index=False)
+    df_gold.to_parquet(gold_path, index=False)
     load_to_postgres(df_gold, "agg_empresas", conn_str)
     
     logging.info("Processo finalizado: camada Gold gerada e persistida com sucesso")

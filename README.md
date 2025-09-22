@@ -112,6 +112,8 @@ Ao final, os dados estarão disponíveis nas tabelas:
 ├── docker-compose.yml
 └── README.md
 ```
+---
+
 ## Output Final
 
 Tabela `agg_empresas`:
@@ -123,3 +125,4 @@ Tabela `agg_empresas`:
 | `flag_socio_estrangeiro` | boolean | True se existe pelo menos 1 sócio estrangeiro                             |
 | `doc_alvo`               | boolean | True se porte da empresa = 03 **e** possui mais de 1 sócio; caso contrário, False |
 
+![alt text](image.png)

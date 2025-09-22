@@ -5,8 +5,8 @@ from transformation.transform import process_empresas, process_socios
 from load.persist import build_gold_sql
 
 def main():
-    #load_dotenv()
-    conn_str = "postgresql+psycopg2://postgres:1020@localhost:5432/receita"
+    load_dotenv()
+    conn_str = os.getenv("POSTGRES_CONN")
     
     ingest_empresas()
     ingest_socios()
