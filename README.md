@@ -58,7 +58,7 @@ O projeto segue a arquitetura em camadas conhecida como **Medallion Architecture
 
 ## Tecnologias Utilizadas
 
-- **Python 3.11**
+- **Python 3.12**
 - **Pandas** para manipulação de dados
 - **SQLAlchemy** + **Postgres** para persistência
 - **Docker & Docker Compose** para containerização
@@ -87,7 +87,6 @@ POSTGRES_CONN=postgresql+psycopg2://etl_user:etl_pass@db:5432/etl_db
 ```bash
 docker-compose up --build
 ```
-
 ### 4. Executar o pipeline
 O container pipeline já executa automaticamente o main.py.
 Ao final, os dados estarão disponíveis nas tabelas:
@@ -96,6 +95,24 @@ Ao final, os dados estarão disponíveis nas tabelas:
 `stg_socios`
 `agg_empresas`
 
+---
+
+## 🚀 Executando o projeto sem Docker
+
+O processo também pode ser executado **sem a utilização do Docker**.  
+Para isso, siga os passos abaixo:
+
+1. Crie um arquivo `.env` na raiz do projeto com a variável de conexão completa:
+
+   ```bash
+   POSTGRES_CONN=postgresql+psycopg2://<usuario>:<senha>@localhost:5432/<nome_do_banco>
+  ```
+Substitua <usuario>, <senha> e <nome_do_banco> pelos valores corretos do seu PostgreSQL local.
+
+2. Execute o pipeline diretamente com Python:
+   ```bash
+    python main.py
+  ```
 ---
 
 ## Estrutura do Projeto

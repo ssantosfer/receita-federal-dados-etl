@@ -20,7 +20,7 @@ services:
     depends_on:
       - db
     environment:
-      POSTGRES_CONN: ${POSTGRES_CONN}
+      POSTGRES_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:${POSTGRES_PORT}/${POSTGRES_DB}
     volumes:
       - .:/app
 
